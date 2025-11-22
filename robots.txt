@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://giorgiopiccini.org/sitemap.xml
