@@ -112,6 +112,30 @@
       font-size: 0.9rem;
       color: #555;
     }
+    .translate-bar {
+      background: #e5f0ff;
+      padding: 0.4rem 1rem;
+      font-size: 0.85rem;
+      border-bottom: 1px solid #c4d5f5;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .translate-bar span {
+      font-weight: 600;
+    }
+    .translate-bar button {
+      border: 1px solid #c4d5f5;
+      background: #fff;
+      border-radius: 999px;
+      padding: 0.2rem 0.7rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+    .translate-bar button:hover {
+      background: #f0f4ff;
+    }
     footer {
       text-align: center;
       font-size: 0.8rem;
@@ -121,6 +145,15 @@
   </style>
 </head>
 <body>
+  
+  <div class="translate-bar">
+  <span>Traduzione automatica:</span>
+  <button onclick="translatePage('en')">English</button>
+  <button onclick="translatePage('ru')">Русский</button>
+  <button onclick="translatePage('uk')">Українська</button>
+  <button onclick="translatePage('fr')">Français</button>
+  <button onclick="translatePage('de')">Deutsch</button>
+</div>
 
 <header>
   <h1>Piano della Memoria Comune</h1>
@@ -289,8 +322,21 @@
 </footer>
 
 <script>
+  // aggiorna automaticamente l’anno nel footer
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // apre la pagina corrente in Google Translate nella lingua scelta
+  function translatePage(lang) {
+    var url = window.location.href;
+    var translateUrl =
+      'https://translate.google.com/translate?sl=auto&tl='
+      + encodeURIComponent(lang)
+      + '&u='
+      + encodeURIComponent(url);
+    window.location.href = translateUrl;
+  }
 </script>
+
 
 </body>
 </html>
